@@ -10,12 +10,14 @@ import (
 
 // ServeHello Serves Hello Message
 func ServeHello() {
+	log.Println(" DBG: Accepting traffic for /hello")
 	helloHandler := http.HandlerFunc(HelloHandler)
 	http.Handle("/hello", helloHandler)
 }
 
 //HelloHandler Handles the hello
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
+	var msg = "Hello World!"
 
 	// Some simple debig messages
 	log.Println(" DBG: Method - ", r.Method)
@@ -23,15 +25,17 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println(" DBG: URL - ", r.URL)
 	m, err := url.ParseQuery(r.URL.RawQuery)
 
-	msg, ok := m["msg"]
-	log.Println(" DBG: MSG - ", msg)
-	if ok == false {
-		msg[0] = "Hello World!"
+	if err == nil && len(m) != 0 {
+		mm, ok := m["msg"]
+		if ok != false {
+			msg = mm[0]
+			log.Println(" DBG: MSG - ", msg)
+		}
 	}
 
 	// Stage 2 - Need to use the input to parse the message later
 	hm := HelloMessage{
-		Msg:   msg[0],
+		Msg:   msg,
 		Stamp: time.Now(),
 	}
 
