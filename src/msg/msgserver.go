@@ -23,6 +23,7 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println(" DBG: Method - ", r.Method)
 	log.Println(" DBG: Body - ", r.Body)
 	log.Println(" DBG: URL - ", r.URL)
+
 	m, err := url.ParseQuery(r.URL.RawQuery)
 
 	if err == nil && len(m) != 0 {

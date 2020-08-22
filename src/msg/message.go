@@ -13,6 +13,13 @@ import (
  * - https://golang.org/pkg/time/#pkg-examples
  */
 
+const (
+	//HEALTHY defines the server state
+	HEALTHY = "Server is Healthy!"
+	//UNHEALTHY defines the unhealthy state
+	UNHEALTHY = "Server is unhealthy!"
+)
+
 // HelloMessage Hello Message struct
 type HelloMessage struct {
 	Msg   string    `json:"message"`

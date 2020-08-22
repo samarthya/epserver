@@ -1,0 +1,41 @@
+--- # Service definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-expose
+spec:
+  type: NodePort
+  selector:
+    app: liveness-probe-app
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8090
+...
+--- # Livenessprobe example for HTTP endpoint
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-probe-example
+  labels:
+    name: liveness-probe-app
+spec:
+  containers:
+    - name: liveness-probe-pod
+      image: samarthya/epserver:1.0
+      livenessProbe:
+        httpGet:
+          path: /hello
+          port: 8090
+          httpHeaders:
+            - name: CustomHeader
+              value: Awesome
+        initialDelaySeconds: 5
+        periodSeconds: 3
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8090
+...
