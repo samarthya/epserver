@@ -1,0 +1,27 @@
+--- # Liveness Probe example
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-bbox-lp
+  labels:
+    name: liveness-probe-pod
+# Container specs
+spec:
+  containers:
+    - name: bbox-pod
+      image: busybox:latest
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
