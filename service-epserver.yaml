@@ -1,0 +1,13 @@
+--- # Service definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-expose
+spec:
+  type: NodePort
+  selector:
+    app: my-server
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 9090
