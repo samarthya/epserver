@@ -7,8 +7,22 @@ I will be using this for livenessProbe example.
 
 ## Docker build
 
+### Build the image
+
 ```bash
-docker build -t samarthya/epserver .
+docker build -t samarthya/epserver:1.0 .
+```
+
+### Run the docker image
+
+```bash
+docker run --name epserver -p 9090:8090 samarthya/epserver:1.0 
+```
+
+### Optional signed image
+
+```bash
+docker trust sign samarthya/epserver:1.0
 ```
 
 ## /hello
