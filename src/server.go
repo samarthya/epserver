@@ -1,6 +1,9 @@
 // server entry point
 package main
 
+/**
+ * Look for more contents [here](https://golang.org/doc/articles/wiki/)
+ */
 import (
 	"fmt"
 	"log"
@@ -9,6 +12,7 @@ import (
 	"strconv"
 
 	"github.com/samarthya/msg"
+	"github.com/samarthya/wiki"
 )
 
 var systemPort string
@@ -17,6 +21,7 @@ var systemPort string
 func init() {
 	msg.ServeHello()
 	msg.HealthServer()
+	wiki.SetupView()
 
 	systemPort = os.Getenv("SERVERPORT")
 
@@ -30,6 +35,7 @@ func init() {
 }
 
 func main() {
+
 	log.Printf("%s", "My Simple Http Server")
 	fmt.Println(" -------- Welcome to my server ------- ")
 	log.Fatal(http.ListenAndServe(systemPort, nil))

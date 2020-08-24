@@ -14,7 +14,7 @@ var hm = HelloMessage{
 
 // HealthServer Serves Health Message
 func HealthServer() {
-	log.Println(" DBG: Accepting traffic for /hello")
+	log.Println(" DBG: Accepting traffic for /health")
 	healthHandler := http.HandlerFunc(HealthHandler)
 	http.Handle("/health", healthHandler)
 }

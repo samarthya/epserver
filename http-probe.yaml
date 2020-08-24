@@ -5,11 +5,11 @@ metadata:
   name: liveness-probe-example
   labels:
     name: liveness-probe-app
-    app: my-server
+    app: my-go-server
 spec:
   containers:
     - name: liveness-probe-pod
-      image: samarthya/epserver:1.0
+      image: samarthya/epserver:2.0
       env:
         - name: SERVERPORT
           value: "9090"
@@ -19,7 +19,7 @@ spec:
           cpu: "2000m"
       livenessProbe:
         httpGet:
-          path: /hello
+          path: /health
           port: 9090
         initialDelaySeconds: 5
         periodSeconds: 3

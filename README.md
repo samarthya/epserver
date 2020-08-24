@@ -1,9 +1,16 @@
 # Project Probe
 In this project I will try to create a simple HTTP endpoint that will be hosted as a service that can respond to end points
 - /hello
-- /check
+  
+  Hello can take an argument `msg` which if specified can return the desired output.
+  
+  ![Message Param](./images/message-param.png)
 
-I will be using this for livenessProbe example.
+- /check
+- / 
+  ![Welcome](./images/welcome.png)
+  
+I will be using this for livenessProbe example, and is open for extension for anyone wanting to extend this application.
 
 ## Docker build
 
@@ -40,3 +47,6 @@ Will add details later TBD
 
 # References
 I am using the [image](https://hub.docker.com/_/golang)
+
+## Pending Items
+- Unit testing files.
