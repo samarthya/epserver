@@ -1,0 +1,15 @@
+--- # PersistentVolume
+# https://kubernetes.io/docs/concepts/storage/volumes/#local
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-localstorage
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - "ReadWriteOnce"
+  hostPath:
+    path: "/usr/share/elasticsearch"
