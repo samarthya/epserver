@@ -1,0 +1,28 @@
+--- # Pod deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-server-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-go-server
+  template:
+    metadata:
+      labels:
+        app: my-go-server
+    spec:
+      containers:
+        - name: go-server
+          image: samarthya/epserver:2.0
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "1024m"
+          env:
+            - name: SERVERPORT
+              value: "9090"
+          ports:
+            - containerPort: 9090
+# Reference - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
