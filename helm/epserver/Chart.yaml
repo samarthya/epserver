@@ -1,0 +1,8 @@
+# Minimum Version 3 required so v2
+apiVersion: v2
+name: epserver
+description: A sample go server that exposes few endpoints.
+type: application
+version: 2.0.0
+kubeVersion: ~1.18.x
+appVersion: 3.0.0

@@ -50,3 +50,13 @@ I am using the [image](https://hub.docker.com/_/golang)
 
 ## Pending Items
 - Unit testing files.
+
+## Additions
+I am adding some Kubernetes file as I learn more about each individual resource and will soon add a helm chart for the same too.
+
+### Helm
+I will add a repository as my local git repo, which can server the index.yaml
+
+```
+https://github.com/samarthya/hlmepserver.git
+```
